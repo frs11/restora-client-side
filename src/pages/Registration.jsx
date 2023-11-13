@@ -49,7 +49,7 @@ const Registration = () => {
         e.target.reset();
         console.log(user);
         swal("Congratulations!", "Signed Up Successfully!", "success");
-        navigate("/");
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         e.target.reset();

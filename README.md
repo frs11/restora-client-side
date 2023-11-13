@@ -1,10 +1,10 @@
-# Restaurant Manager
+# Restora
 
 A beautiful website for managing your Restaurant.
 
 ## Website Live Link
 
-[Restaurant Manager]()
+[Restora](https://restora-mern.netlify.app/)
 
 ## Features
 

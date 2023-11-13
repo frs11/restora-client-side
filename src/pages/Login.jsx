@@ -19,7 +19,7 @@ const Login = () => {
       .then(() => {
         e.target.reset();
         swal("Congratulations!", "You logged in Successfully!", "success");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/", { replace: true });
       })
       .catch((err) => {
         swal(err.message, "Try again", "warning");
@@ -32,7 +32,7 @@ const Login = () => {
     loginWithGoogle()
       .then(() => {
         swal("Congratulations!", "You logged in Successfully!", "success");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/", { replace: true });
       })
       .catch((err) => {
         swal(err.message, "", "warning");
