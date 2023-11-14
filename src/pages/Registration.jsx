@@ -57,59 +57,59 @@ const Registration = () => {
       });
   };
   return (
-    <div className="hero min-h-screen bg-base-900">
+    <div className="hero min-h-screen bg-base-900 dark:bg-slate-500 dark:text-white">
       <div className="hero-content flex-col w-full md:w-1/2 lg:w-2/6 lg:max-w-2xl">
         <div className="text-center">
-          <h1 className="text-4xl font-bold">Please Sign Up</h1>
+          <h1 className="text-4xl font-semibold">Please Sign Up</h1>
         </div>
-        <div className="card w-full py-3 shadow-xl bg-base-100">
+        <div className="card w-full py-3 shadow-xl bg-base-100 dark:bg-slate-600">
           <form onSubmit={handleRegistration} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text dark:text-white">Name</span>
               </label>
               <input
                 type="text"
                 placeholder="Name"
                 name="name"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text dark:text-white">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo url</span>
+                <span className="label-text dark:text-white">Photo url</span>
               </label>
               <input
                 type="text"
                 placeholder="Photo url"
                 defaultValue="https://source.unsplash.com/random/200x200/?img=1"
                 name="photourl"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 // required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text dark:text-white">Password</span>
               </label>
               <input
                 type="password"
                 placeholder="password"
                 name="password"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 required
               />
             </div>
@@ -119,11 +119,11 @@ const Registration = () => {
               </button>
             </div>
           </form>
-          <span className="text-center">
+          <span className="text-center dark:text-white">
             Already have an account? Please{" "}
             <Link
               to="/login"
-              className=" font-medium hover:underline text-violet-700"
+              className=" font-medium hover:underline text-violet-700 dark:text-violet-300"
             >
               Sign in
             </Link>

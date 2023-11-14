@@ -41,34 +41,34 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-900">
-      <div className="hero-content flex-col w-full md:w-1/2 lg:w-2/6 lg:max-w-2xl">
+    <div className="hero min-h-screen bg-base-900 dark:text-white">
+      <div className="hero-content flex-col w-full md:w-1/2 lg:w-2/6  lg:max-w-2xl">
         <div className="text-center">
-          <h1 className="text-4xl font-bold">Please Sign in</h1>
+          <h1 className="text-4xl font-semibold">Please Sign in</h1>
         </div>
-        <div className="card w-full py-3 shadow-xl bg-base-100">
+        <div className="card w-full py-3 shadow-xl bg-base-100 dark:bg-slate-600">
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text dark:text-white">Email</span>
               </label>
               <input
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 required
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text dark:text-white">Password</span>
               </label>
               <input
                 type="password"
                 name="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered dark:bg-slate-700"
                 required
               />
             </div>
@@ -80,7 +80,7 @@ const Login = () => {
           </form>
 
           <div className=" my-2 px-8 w-full ">
-            <p className="text-sm text-gray-700 mb-3 ml-3">
+            <p className="text-sm text-gray-700 mb-3 ml-3 dark:text-white">
               You can also login using Google
             </p>
             <button
@@ -99,7 +99,7 @@ const Login = () => {
             New to this website? Please{" "}
             <Link
               to="/registration"
-              className=" hover:underline font-medium text-violet-700"
+              className=" hover:underline font-medium text-violet-700 dark:text-violet-300"
             >
               Sign Up
             </Link>

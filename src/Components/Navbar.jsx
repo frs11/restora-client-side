@@ -31,7 +31,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
-            : "flex mx-2 py-1 font-semibold hover:text-violet-700"
+            : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >
         Home
@@ -41,7 +41,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
-            : "flex mx-2 py-1 font-semibold hover:text-violet-700"
+            : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >
         All Foods
@@ -51,7 +51,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
-            : "flex mx-2 py-1 font-semibold hover:text-violet-700"
+            : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >
         Blogs
