@@ -6,10 +6,13 @@ import useTheme from "../Contexts/themeHook";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [avatarContent, setAvatarContent] = useState(false);
   const { user, userSignOut } = useContext(AuthContext);
   const { toggleTheme } = useTheme();
   const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
+
+  // console.log(user);
 
   const handleLogin = () => {
     navigate("/login");
@@ -111,6 +114,34 @@ const Navbar = () => {
       </span>
     </>
   );
+  const AvatarLinks = (
+    <>
+      <Link
+        to="/profile"
+        className="px-4 py-1 font-semibold bg-slate-200 dark:bg-slate-800 my-1 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-lg"
+      >
+        Profile
+      </Link>
+      <Link
+        to="/addedFoodList"
+        className="px-4 py-1 font-semibold bg-slate-200 dark:bg-slate-800 my-1 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-lg"
+      >
+        Added Food List
+      </Link>
+      <Link
+        to="/addFood"
+        className="px-4 py-1 font-semibold bg-slate-200 dark:bg-slate-800 my-1 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-lg"
+      >
+        Add a Food
+      </Link>
+      <Link
+        to="/orderedFood"
+        className="px-4 py-1 font-semibold bg-slate-200 dark:bg-slate-800 my-1 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-lg"
+      >
+        Ordered List
+      </Link>
+    </>
+  );
 
   return (
     <div className="navbar shadow-lg w-full dark:bg-slate-600 dark:text-white lg:px-12 mx-auto">
@@ -174,15 +205,27 @@ const Navbar = () => {
         </div>
         {user ? (
           <div className="flex items-center space-x-3">
-            <div className="">
-              <img
-                className="w-7 lg:w-10 h-7 lg:h-10 rounded-full ml-4 lg:ml-2"
-                src={user?.photoURL}
-                alt=""
-              />
-              <p className="text-xs font-logoFont text-center">
-                {user?.displayName}
-              </p>
+            <div
+              className="dropdown dropdown-bottom dropdown-end"
+              onClick={() => setAvatarContent(!avatarContent)}
+            >
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    className="w-7 lg:w-10 h-7 lg:h-10 rounded-full mr-3"
+                    src={user?.photoURL}
+                    alt="User Image"
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className={`menu menu-sm dropdown-content dark:bg-slate-700 mt-3 z-[1] p-2 ${
+                  avatarContent ? "" : "hidden"
+                } shadow bg-base-100 rounded-box w-max`}
+              >
+                {AvatarLinks}
+              </ul>
             </div>
             <button
               onClick={handleLogout}
