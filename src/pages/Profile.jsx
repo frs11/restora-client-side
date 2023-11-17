@@ -20,6 +20,7 @@ const Profile = () => {
                   ? user.photoURL
                   : "https://source.unsplash.com/random/200x200/?img=1"
               }
+              referrerPolicy="no-referrer"
               alt="user profile pic"
             />
           </div>

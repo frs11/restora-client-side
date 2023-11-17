@@ -11,6 +11,7 @@ import UserAddedFoods from "../pages/UserAddedFoods";
 import AddFood from "../pages/AddFood";
 import OrderedFood from "../pages/OrderedFood";
 import PrivateRoutes from "./PrivateRoutes";
+import RestrictedRoutes from "./RestrictedRoutes";
 
 const customRoutes = createBrowserRouter([
   {
@@ -24,15 +25,27 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/registration",
-        element: <Registration></Registration>,
+        element: (
+          <RestrictedRoutes>
+            <Registration></Registration>
+          </RestrictedRoutes>
+        ),
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: (
+          <RestrictedRoutes>
+            <Login></Login>
+          </RestrictedRoutes>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/addedFoodList",

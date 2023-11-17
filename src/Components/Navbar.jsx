@@ -214,6 +214,7 @@ const Navbar = () => {
                   <img
                     className="w-7 lg:w-10 h-7 lg:h-10 rounded-full mr-3"
                     src={user?.photoURL}
+                    referrerPolicy="no-referrer"
                     alt="User Image"
                   />
                 </div>
@@ -229,7 +230,7 @@ const Navbar = () => {
             </div>
             <button
               onClick={handleLogout}
-              className="px-2 py-1 text-sm lg:text-base lg:px-5 lg:py-2 border hover:border-red-700 border-red-300 hover:bg-red-400 hover:text-black font-medium rounded-md"
+              className="px-2 py-1 text-sm lg:text-base lg:px-5 lg:py-2 border duration-150 ease-in-out hover:border-red-700 border-red-300 hover:bg-red-400 hover:text-black font-medium rounded-md"
             >
               Sign Out
             </button>
@@ -243,7 +244,7 @@ const Navbar = () => {
             />
             <button
               onClick={handleLogin}
-              className="px-2 py-1 text-sm lg:text-base lg:px-5 lg:py-2 bg-violet-600 hover:bg-violet-400 hover:text-black text-white rounded-md"
+              className="px-2 py-0.5 duration-150 ease-in-out text-sm lg:text-base lg:px-5 lg:py-2 border-2 border-violet-500 hover:bg-violet-500 text-white rounded-md"
             >
               Sign In
             </button>
