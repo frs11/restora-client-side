@@ -33,7 +33,7 @@ const Navbar = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
+            ? "text-white px-3 py-1 bg-violet-600 rounded font-medium"
             : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >
@@ -43,7 +43,7 @@ const Navbar = () => {
         to="/allFoodItems"
         className={({ isActive }) =>
           isActive
-            ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
+            ? "text-white px-3 py-1 bg-violet-600 rounded font-medium"
             : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >
@@ -53,7 +53,7 @@ const Navbar = () => {
         to="/blogs"
         className={({ isActive }) =>
           isActive
-            ? "text-white px-3 py-1 bg-violet-500 rounded font-medium"
+            ? "text-white px-3 py-1 bg-violet-600 rounded font-medium"
             : "flex mx-2 py-1 font-semibold hover:text-violet-700 dark:hover:text-violet-400"
         }
       >

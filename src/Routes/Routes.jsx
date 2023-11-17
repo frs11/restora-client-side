@@ -53,7 +53,11 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/addFood",
-        element: <AddFood></AddFood>,
+        element: (
+          <PrivateRoutes>
+            <AddFood></AddFood>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/allFoodItems",
