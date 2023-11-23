@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
+import { Helmet } from "react-helmet-async";
+import useAxios from "../Hooks/useAxios";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   // console.log(user);
 
   const validateNumber = (number) => {
@@ -48,6 +51,10 @@ const AddFood = () => {
     } else {
       price = newPrice;
       quantity = newQuantity;
+      let addedBy = {
+        userName,
+        userEmail,
+      };
       const newFood = {
         name,
         image,
@@ -55,23 +62,42 @@ const AddFood = () => {
         price,
         quantity,
         origin,
-        userName,
-        userEmail,
+        addedBy,
         description,
       };
-      Swal.fire({
-        title: "Success!!!",
-        text: "Food Added Successfully",
-        icon: "success",
-        confirmButtonText: "Change",
-      });
+
+      // fetch(
+      //   "/foods",
+      //   {
+      //     method: "POST",
+      //     headers: { "content-type": "application/json" },
+      //     body: JSON.stringify(newFood),
+      //   }
+      // )
+
+      axiosSecure
+        .post("/foods", newFood)
+
+        .then((res) => {
+          if (res.data?.insertedId) {
+            Swal.fire({
+              title: "Success!!!",
+              text: "Food Added Successfully",
+              icon: "success",
+              confirmButtonText: "Exit",
+            });
+          }
+        });
 
       // e.target.reset();
-      console.log(newFood);
+      console.log("added Food Details ", newFood);
     }
   };
   return (
     <div className="pt-20 pb-36 headerbg text-white">
+      <Helmet>
+        <title>Restora | {user.displayName} | Add a Food</title>
+      </Helmet>
       <h1 className="text-5xl mb-24 font-semibold text-center">Add a Food</h1>
       <div className="w-9/12 mx-auto">
         <form onSubmit={handleAddFood} className="mt-10">
@@ -122,6 +148,7 @@ const AddFood = () => {
                   type="number"
                   name="price"
                   required
+                  step="any"
                   placeholder="Price"
                   className="input input-bordered w-full text-black"
                 />
@@ -164,7 +191,7 @@ const AddFood = () => {
                   required
                   placeholder="User Name"
                   readOnly
-                  className="input input-bordered w-full text-black"
+                  className="input input-bordered w-full text-gray-500"
                 />
               </label>
             </div>
@@ -179,7 +206,7 @@ const AddFood = () => {
                   required
                   placeholder="User Email"
                   readOnly
-                  className="input input-bordered w-full text-black"
+                  className="input input-bordered w-full text-gray-500"
                 />
               </label>
             </div>

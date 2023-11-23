@@ -3,36 +3,52 @@ import { AuthContext } from "../Contexts/AuthProvider";
 import { useContext } from "react";
 import swal from "sweetalert";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
+import useAxios from "../Hooks/useAxios";
 
 const Login = () => {
   const { UserLogin, loginWithGoogle } = useContext(AuthContext);
+  const axiosSecure = useAxios();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
     const userEmail = form.get("email");
     const userPassword = form.get("password");
 
     UserLogin(userEmail, userPassword)
-      .then(() => {
-        e.target.reset();
-        swal("Congratulations!", "You logged in Successfully!", "success");
-        navigate(location?.state ? location.state : "/", { replace: true });
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        const email = { userEmail };
+
+        axiosSecure.post("/jwt", email).then((res) => {
+          console.log(res.data);
+          event.target.reset();
+          swal("Congratulations!", "You logged in Successfully!", "success");
+          navigate(location?.state ? location.state : "/", { replace: true });
+        });
       })
       .catch((err) => {
         swal(err.message, "Try again", "warning");
-        e.target.reset();
+        event.target.reset();
         console.log(err.message);
       });
   };
 
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then(() => {
-        swal("Congratulations!", "You logged in Successfully!", "success");
-        navigate(location?.state ? location.state : "/", { replace: true });
+      .then((res) => {
+        const user = res.user;
+        const { email } = user;
+
+        axiosSecure.post("/jwt", email).then((res) => {
+          console.log(res.data);
+          swal("Congratulations!", "You logged in Successfully!", "success");
+          navigate(location?.state ? location.state : "/", { replace: true });
+        });
       })
       .catch((err) => {
         swal(err.message, "", "warning");
@@ -42,6 +58,9 @@ const Login = () => {
 
   return (
     <div className="hero min-h-screen bg-base-900 dark:text-white">
+      <Helmet>
+        <title>Restora | Login | Log into your Account</title>
+      </Helmet>
       <div className="hero-content flex-col w-full md:w-1/2 lg:w-2/6  lg:max-w-2xl">
         <div className="text-center">
           <h1 className="text-4xl font-semibold">Please Sign in</h1>
@@ -56,6 +75,7 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 name="email"
+                defaultValue="test@test.com"
                 className="input input-bordered dark:bg-slate-700"
                 required
               />
@@ -67,6 +87,7 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
+                defaultValue="Test123."
                 placeholder="password"
                 className="input input-bordered dark:bg-slate-700"
                 required

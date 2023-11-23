@@ -100,7 +100,7 @@ const Footer = () => {
         <aside>
           <p>
             Copyright © 2023 - All right reserved by{" "}
-            <span className="text-lg font-semibold text-stone-400 hover:text-violet-400 hover:underline ">
+            <span className="text-lg font-semibold text-stone-300 hover:text-violet-400 hover:underline ">
               <span className="font-logoFont font-medium">
                 Res<span className="text-violet-400">tora</span>
               </span>

@@ -3,6 +3,7 @@ import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { useContext } from "react";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
   const { createNewUser } = useContext(AuthContext);
@@ -58,6 +59,9 @@ const Registration = () => {
   };
   return (
     <div className="hero min-h-screen bg-base-900 dark:bg-slate-500 dark:text-white">
+      <Helmet>
+        <title>Restora | Registration | Register Your Account</title>
+      </Helmet>
       <div className="hero-content flex-col w-full md:w-1/2 lg:w-2/6 lg:max-w-2xl">
         <div className="text-center">
           <h1 className="text-4xl font-semibold">Please Sign Up</h1>

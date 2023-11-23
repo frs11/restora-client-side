@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
 
   return (
     <div className="">
+      <Helmet>
+        <title>Restora | {user.displayName} | Profile </title>
+      </Helmet>
       <div className="w-full lg:w-10/12 mx-auto my-10">
         <h1 className="text-4xl text-center">
           User{" "}

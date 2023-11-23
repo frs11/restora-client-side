@@ -1,3 +1,4 @@
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useNavigate, useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
@@ -13,6 +14,11 @@ export default function ErrorPage() {
       id="error-page"
       className="flex h-screen w-11/12 mx-auto items-center justify-center"
     >
+      <HelmetProvider>
+        <Helmet>
+          <title>Error | Invalid Link</title>
+        </Helmet>
+      </HelmetProvider>
       <div>
         <img
           src="https://i.ibb.co/XJgG3sD/teary-eyes-emoji-removebg-preview.png"

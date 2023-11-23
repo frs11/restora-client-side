@@ -1,0 +1,119 @@
+[
+  {
+    "foodName": "Grilled Salmon",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Seafood",
+    "quantity": 20,
+    "price": 18.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Norway",
+    "description": "Fresh Norwegian salmon, expertly grilled to perfection. Served with a zesty lemon glaze and a side of seasonal vegetables."
+  },
+  {
+    "foodName": "Margherita Pizza",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Italian",
+    "quantity": 25,
+    "price": 12.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Italy",
+    "description": "Classic Margherita pizza with a thin crust, topped with fresh tomatoes, mozzarella cheese, and basil. A timeless favorite that transports you to the streets of Naples."
+  },
+  {
+    "foodName": "Chicken Tikka Masala",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Indian",
+    "quantity": 20,
+    "price": 15.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "India",
+    "description": "Tender chicken marinated in aromatic spices, grilled, and simmered in a creamy tomato sauce. Served with fragrant basmati rice."
+  },
+  {
+    "foodName": "Caprese Salad",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Salad",
+    "quantity": 30,
+    "price": 8.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Italy",
+    "description": "A refreshing salad featuring vine-ripened tomatoes, fresh mozzarella, basil leaves, and a drizzle of balsamic glaze. A delightful burst of flavors."
+  },
+  {
+    "foodName": "Beef Teriyaki Stir-Fry",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Asian",
+    "quantity": 22,
+    "price": 17.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Japan",
+    "description": "Succulent strips of beef wok-tossed with colorful vegetables in a savory teriyaki sauce. Served with steamed jasmine rice for a perfect balance of flavors."
+  },
+  {
+    "foodName": "Vegetarian Pasta Primavera",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Italian",
+    "quantity": 25,
+    "price": 14.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Italy",
+    "description": "Al dente pasta tossed with a medley of fresh, seasonal vegetables and a light olive oil and garlic sauce. A vibrant and wholesome vegetarian delight."
+  },
+  {
+    "foodName": "Chocolate Lava Cake",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Dessert",
+    "quantity": 20,
+    "price": 9.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "France",
+    "description": "Indulge in the rich decadence of a warm chocolate lava cake, topped with a dusting of powdered sugar. A heavenly treat for your sweet tooth."
+  },
+  {
+    "foodName": "Shrimp Pad Thai",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Thai",
+    "quantity": 28,
+    "price": 16.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Thailand",
+    "description": "Authentic Thai stir-fried rice noodles with succulent shrimp, tofu, bean sprouts, and crushed peanuts. A symphony of sweet, sour, and spicy flavors."
+  },
+  {
+    "foodName": "Mediterranean Grilled Lamb",
+    "foodImage": "https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg",
+    "foodCategory": "Mediterranean",
+    "quantity": 20,
+    "price": 20.99,
+    "addedBy": {
+      "name": "Sunny Vai",
+      "email": "sunnyvai110@gmail.com"
+    },
+    "foodOrigin": "Greece",
+    "description": "Tender lamb marinated in Mediterranean spices, grilled to perfection, and served with a side of tzatziki sauce and roasted vegetables. A taste of the Greek Isles."
+  }
+]

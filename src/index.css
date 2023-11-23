@@ -11,11 +11,3 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.headerbgdark {
-  background: url("https://i.ibb.co/q7Pm2Jk/italian-pasta-shells-with-mushrooms-zucchini-tomato-sauce-min.jpg"),
-    linear-gradient(to left, #070707ce, #0e0d0db2);
-  background-blend-mode: overlay;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
