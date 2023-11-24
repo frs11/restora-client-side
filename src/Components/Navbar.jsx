@@ -244,7 +244,7 @@ const Navbar = () => {
             />
             <button
               onClick={handleLogin}
-              className="px-2 py-0.5 duration-150 ease-in-out text-sm lg:text-base lg:px-5 lg:py-2 border-2 border-violet-500 hover:bg-violet-500 text-white rounded-md"
+              className="px-2 py-0.5 duration-150 ease-in-out text-sm lg:text-base lg:px-5 lg:py-2 border-2 border-violet-500 hover:bg-violet-500 hover:text-white rounded-md"
             >
               Sign In
             </button>

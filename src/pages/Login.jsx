@@ -19,9 +19,7 @@ const Login = () => {
     const userPassword = form.get("password");
 
     UserLogin(userEmail, userPassword)
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
+      .then(() => {
         const email = { userEmail };
 
         axiosSecure.post("/jwt", email).then((res) => {

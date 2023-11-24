@@ -12,6 +12,7 @@ import AddFood from "../pages/AddFood";
 import OrderedFood from "../pages/OrderedFood";
 import PrivateRoutes from "./PrivateRoutes";
 import RestrictedRoutes from "./RestrictedRoutes";
+import DataLoadingState from "./DataLoadingState";
 
 const customRoutes = createBrowserRouter([
   {
@@ -65,7 +66,11 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
-        element: <AllFoods></AllFoods>,
+        element: (
+          <DataLoadingState>
+            <AllFoods></AllFoods>
+          </DataLoadingState>
+        ),
       },
       {
         path: "/orderedFood",

@@ -1,23 +1,21 @@
 import { Helmet } from "react-helmet-async";
-import useAxios from "../Hooks/useAxios";
-import { useEffect, useState } from "react";
 import FoodCard from "../Components/Foods/FoodCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const AllFoods = () => {
-  const axiosSecure = useAxios();
   const [foods, setFoods] = useState([]);
 
-  // console.log(foods);
-
   useEffect(() => {
-    axiosSecure
-      .get("/foods")
+    axios
+      .get(`http://localhost:5000/foods`)
       .then((res) => {
-        // console.log(res.data);
         setFoods(res.data);
       })
       .catch((err) => console.log(err));
-  }, [foods, axiosSecure]);
+  }, []);
+
+  console.log(foods);
 
   return (
     <div>
