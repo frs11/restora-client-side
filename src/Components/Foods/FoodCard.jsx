@@ -12,8 +12,8 @@ const FoodCard = ({ foodData }) => {
     foodCategory,
     quantity,
     price,
-    addedBy,
-    foodOrigin,
+    // addedBy,
+    // foodOrigin,
   } = foodData || {};
 
   useEffect(() => {
@@ -69,33 +69,16 @@ const FoodCard = ({ foodData }) => {
                 <td>:</td>
                 <td>{price}$</td>
               </tr>
-              {/* row 5 */}
-              <tr>
-                <td className="font-bold">User: </td>
-                <td>:</td>
-                <td>{addedBy.name}</td>
-              </tr>
-              {/* row 6 */}
-              <tr className="bg-gray-100 dark:bg-gray-700">
-                <td className="font-bold">Origin: </td>
-                <td>:</td>
-                <td>{foodOrigin}</td>
-              </tr>
             </tbody>
           </table>
         </div>
       </div>
 
       <div className="">
-        <div className="grid grid-cols-2 gap-2">
+        <div className="">
           <Link to={`/foods/${_id}`}>
             <button className="w-full btn bg-violet-900 text-white hover:bg-violet-700 border-violet-900 ease-in-out hover:border-violet-800 duration-300">
               Details
-            </button>
-          </Link>
-          <Link to={`/foods/update/${_id}`}>
-            <button className="w-full btn btn-outline hover:bg-violet-700 dark:text-white hover:border-none border ease-in-out duration-300 border-violet-500">
-              Update
             </button>
           </Link>
         </div>

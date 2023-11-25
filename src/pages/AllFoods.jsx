@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import FoodCard from "../Components/Foods/FoodCard";
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { axiosSecure } from "../Hooks/useAxios";
 
 const AllFoods = () => {
   const totalFoods = useLoaderData();
@@ -16,10 +17,8 @@ const AllFoods = () => {
   const pages = [...Array(pagesCount).keys()];
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:5000/foods?page=${currentPage}&size=${foodPerPage}`
-      )
+    axiosSecure
+      .get(`/foods?page=${currentPage}&size=${foodPerPage}`)
       .then((res) => {
         setFoods(res.data);
         setLoading(false);
