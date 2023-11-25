@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const AllFoods = () => {
+  const totalFoods = useLoaderData();
   const [foods, setFoods] = useState([]);
-  const [foodPerPage, setFoodPerPage] = useState(10);
+  const [loading, setLoading] = useState(true);
+  const [foodPerPage, setFoodPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalFoods = useLoaderData().length;
-  const pagesCount = Math.ceil(totalFoods / foodPerPage);
+  const [pagesCount, setPagesCount] = useState(
+    Math.ceil(totalFoods.length / foodPerPage)
+  );
   const pages = [...Array(pagesCount).keys()];
 
   useEffect(() => {
@@ -19,13 +22,17 @@ const AllFoods = () => {
       )
       .then((res) => {
         setFoods(res.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [currentPage, foodPerPage]);
 
+  const setNumberOfPage = () => {
+    setPagesCount(Math.ceil(foods.length / foodPerPage));
+  };
+
   const handleFoodsPerPage = (e) => {
     const intValue = parseInt(e.target.value);
-    // console.log(intValue);
     setFoodPerPage(intValue);
     setCurrentPage(0);
   };
@@ -39,13 +46,37 @@ const AllFoods = () => {
       setCurrentPage(currentPage + 1);
     }
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const searchFood = form.get("search").toLowerCase();
+    const searchedFood = totalFoods.filter((searchedFoodItem) =>
+      searchedFoodItem.foodName.toLowerCase().includes(searchFood)
+    );
+    setFoods(searchedFood);
+    setNumberOfPage();
+    e.target.reset();
+  };
 
   return (
     <div>
       <Helmet>
         <title>Restora | Food List | View Available Foods</title>
       </Helmet>
-      {foods.length > 0 ? (
+      <div className="flex justify-center mt-10">
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            name="search"
+            placeholder="Search by Food Name..."
+            className="dark:bg-gray-600 px-3 py-1 h-8 border-y border-l rounded-l border-black dark:border-gray-400 dark:text-white"
+          />
+          <button className="px-5 py-1 rounded-r bg-violet-800 text-white hover:bg-violet-700 border-violet-600 border-r border-y ease-in-out hover:border-violet-800 duration-300">
+            Search
+          </button>
+        </form>
+      </div>
+      {!loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-3/4 md:w-10/12 lg:w-10/12 mx-auto my-16">
           {foods.length > 0 ? (
             foods.map((foodData) => (
@@ -95,8 +126,8 @@ const AllFoods = () => {
           onChange={handleFoodsPerPage}
           defaultValue={foodPerPage}
         >
-          <option value="5">5</option>
-          <option value="10">10</option>
+          <option value="6">6</option>
+          <option value="9">9</option>
           <option value="15">15</option>
           <option value="20">20</option>
         </select>

@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../Firebase Config/firebase,config,js";
 
-const axiosSecure = axios.create({
+export const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
   withCredentials: true,
 });
