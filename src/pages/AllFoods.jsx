@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
+  const [foodPerPage, setFoodPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+  const pagesCount = Math.ceil(foods?.length / foodPerPage);
+  const pages = [...Array(pagesCount).keys()];
+  // console.log(pages, foods.length);
 
   useEffect(() => {
     axios
@@ -15,7 +20,22 @@ const AllFoods = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(foods);
+  const handleFoodsPerPage = (e) => {
+    const intValue = parseInt(e.target.value);
+    console.log(intValue);
+    setFoodPerPage(intValue);
+    setCurrentPage(0);
+  };
+  const handlePrevButton = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextButton = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <div>
@@ -39,6 +59,45 @@ const AllFoods = () => {
           <span className="loading loading-spinner loading-lg text-violet-400 mx-auto "></span>
         </div>
       )}
+      <div className="flex justify-center mb-10 space-x-5">
+        <button
+          className="px-4 text-white py-px bg-gray-600 rounded"
+          onClick={handlePrevButton}
+        >
+          Prev
+        </button>
+        {pages.map((page, idx) => (
+          <button
+            className={
+              currentPage == page
+                ? "px-4 text-white py-px border bg-violet-500 dark:border-violet-400 border-violet-600 rounded"
+                : "px-4 text-white py-px bg-gray-600 border border-gray-600 rounded"
+            }
+            key={idx}
+            onClick={() => setCurrentPage(page)}
+          >
+            {" "}
+            {page + 1}
+          </button>
+        ))}
+        <button
+          className="px-4 text-white py-px bg-gray-600 rounded"
+          onClick={handleNextButton}
+        >
+          Next
+        </button>
+        {/* <p>currentPage: {currentPage + 1}</p> <br /> */}
+        <select
+          className="border bg-gray-700 text-white px-1 py-1 rounded"
+          onChange={handleFoodsPerPage}
+          defaultValue={foodPerPage}
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
     </div>
   );
 };

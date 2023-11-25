@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { useEffect } from "react";
 
 const FoodCard = ({ foodData }) => {
   const {
@@ -12,8 +15,23 @@ const FoodCard = ({ foodData }) => {
     addedBy,
     foodOrigin,
   } = foodData || {};
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      once: false,
+      offset: 150,
+    });
+    AOS.init({
+      startEvent: "onReveal",
+    });
+    AOS.refresh();
+
+    return AOS.refreshHard();
+  }, []);
+
   return (
-    <div className="">
+    <div data-aos="zoom-in-down" className="">
       <div className="shadow-md">
         <div className="flex justify-center">
           <img
