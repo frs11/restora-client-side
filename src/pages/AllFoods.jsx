@@ -2,27 +2,30 @@ import { Helmet } from "react-helmet-async";
 import FoodCard from "../Components/Foods/FoodCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const AllFoods = () => {
   const [foods, setFoods] = useState([]);
   const [foodPerPage, setFoodPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
-  const pagesCount = Math.ceil(foods?.length / foodPerPage);
+  const totalFoods = useLoaderData().length;
+  const pagesCount = Math.ceil(totalFoods / foodPerPage);
   const pages = [...Array(pagesCount).keys()];
-  // console.log(pages, foods.length);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/foods`)
+      .get(
+        `http://localhost:5000/foods?page=${currentPage}&size=${foodPerPage}`
+      )
       .then((res) => {
         setFoods(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [currentPage, foodPerPage]);
 
   const handleFoodsPerPage = (e) => {
     const intValue = parseInt(e.target.value);
-    console.log(intValue);
+    // console.log(intValue);
     setFoodPerPage(intValue);
     setCurrentPage(0);
   };
@@ -43,7 +46,7 @@ const AllFoods = () => {
         <title>Restora | Food List | View Available Foods</title>
       </Helmet>
       {foods.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-3/4 mx-auto my-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-3/4 md:w-10/12 lg:w-10/12 mx-auto my-16">
           {foods.length > 0 ? (
             foods.map((foodData) => (
               <FoodCard key={foodData._id} foodData={foodData}></FoodCard>

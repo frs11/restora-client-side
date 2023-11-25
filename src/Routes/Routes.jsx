@@ -66,6 +66,7 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
+        loader: () => fetch("http://localhost:5000/foods"),
         element: (
           <DataLoadingState>
             <AllFoods></AllFoods>
