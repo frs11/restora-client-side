@@ -32,8 +32,8 @@ const FoodCard = ({ foodData }) => {
 
   return (
     <div data-aos="zoom-in-down" className="">
-      <div className="shadow-md">
-        <div className="flex justify-center">
+      <div className="shadow-md dark:border rounded-md dark:border-slate-700">
+        <div className="flex justify-center px-5 py-3">
           <img
             src={foodImage}
             alt="Food Image"
@@ -41,7 +41,7 @@ const FoodCard = ({ foodData }) => {
           />
         </div>
 
-        <div className="overflow-x-auto border-x border-b border-gray-200 dark:border-gray-700 mb-4 rounded-b-lg">
+        <div className="overflow-x-auto border-x border-b border-gray-200 dark:border-gray-700 rounded-b-lg">
           <table className="table">
             <thead></thead>
             <tbody className="">
@@ -74,7 +74,7 @@ const FoodCard = ({ foodData }) => {
         </div>
       </div>
 
-      <div className="">
+      <div className="mt-4">
         <div className="">
           <Link to={`/foods/${_id}`}>
             <button className="w-full btn bg-violet-900 text-white hover:bg-violet-700 border-violet-900 ease-in-out hover:border-violet-800 duration-300">

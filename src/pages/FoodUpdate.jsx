@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosSecure } from "../Hooks/useAxios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -9,6 +9,7 @@ const FoodUpdate = () => {
   const { id } = useParams();
   const [SelectedFood, setSelectedFood] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosSecure
@@ -110,9 +111,11 @@ const FoodUpdate = () => {
               icon: "success",
               confirmButtonText: "Exit",
             });
+            navigate(-1);
+
+            // e.target.reset();
           }
         });
-      e.target.reset();
     }
   };
 

@@ -4,6 +4,8 @@ import FoodCard from "../Components/Foods/FoodCard";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { axiosSecure } from "../Hooks/useAxios";
+import { IoPlaySkipForward } from "react-icons/io5";
+import { IoIosSkipBackward } from "react-icons/io";
 
 const AllFoods = () => {
   const totalFoods = useLoaderData();
@@ -26,14 +28,11 @@ const AllFoods = () => {
       .catch((err) => console.log(err));
   }, [currentPage, foodPerPage]);
 
-  const setNumberOfPage = () => {
-    setPagesCount(Math.ceil(foods.length / foodPerPage));
-  };
-
   const handleFoodsPerPage = (e) => {
     const intValue = parseInt(e.target.value);
     setFoodPerPage(intValue);
     setCurrentPage(0);
+    setPagesCount(Math.ceil(totalFoods.length / intValue));
   };
   const handlePrevButton = () => {
     if (currentPage > 0) {
@@ -52,8 +51,8 @@ const AllFoods = () => {
     const searchedFood = totalFoods.filter((searchedFoodItem) =>
       searchedFoodItem.foodName.toLowerCase().includes(searchFood)
     );
+    setPagesCount(Math.ceil(searchedFood.length / foodPerPage));
     setFoods(searchedFood);
-    setNumberOfPage();
     e.target.reset();
   };
 
@@ -92,36 +91,38 @@ const AllFoods = () => {
           <span className="loading loading-spinner loading-lg text-violet-400 mx-auto "></span>
         </div>
       )}
-      <div className="flex justify-center mb-10 space-x-5">
+      <div className="flex justify-center items-center w-10/12 mx-auto flex-wrap mb-10 space-x-3 space-y-2">
         <button
-          className="px-4 text-white py-px bg-gray-600 rounded"
+          className="px-4 flex items-center text-white py-px bg-gray-600 rounded"
           onClick={handlePrevButton}
         >
-          Prev
+          <IoIosSkipBackward /> Prev
         </button>
-        {pages.map((page, idx) => (
-          <button
-            className={
-              currentPage == page
-                ? "px-4 text-white py-px border bg-violet-500 dark:border-violet-400 border-violet-600 rounded"
-                : "px-4 text-white py-px bg-gray-600 border border-gray-600 rounded"
-            }
-            key={idx}
-            onClick={() => setCurrentPage(page)}
-          >
-            {" "}
-            {page + 1}
-          </button>
-        ))}
+        <span className="flex flex-wrap justify-center items-center space-x-3">
+          {pages.map((page, idx) => (
+            <button
+              className={
+                currentPage == page
+                  ? "px-4 text-white py-px border bg-violet-500 dark:border-violet-400 border-violet-600 rounded"
+                  : "px-4 text-white py-px bg-gray-600 border border-gray-600 rounded"
+              }
+              key={idx}
+              onClick={() => setCurrentPage(page)}
+            >
+              {" "}
+              {page + 1}
+            </button>
+          ))}
+        </span>
         <button
-          className="px-4 text-white py-px bg-gray-600 rounded"
+          className="flex items-center px-4 text-white py-px bg-gray-600 rounded"
           onClick={handleNextButton}
         >
-          Next
+          Next <IoPlaySkipForward />
         </button>
         {/* <p>currentPage: {currentPage + 1}</p> <br /> */}
         <select
-          className="border bg-gray-700 text-white px-1 py-1 rounded"
+          className="border bg-gray-700 text-white px-1 py-px rounded"
           onChange={handleFoodsPerPage}
           defaultValue={foodPerPage}
         >
