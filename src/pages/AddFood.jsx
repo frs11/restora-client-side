@@ -2,11 +2,10 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import useAxios from "../Hooks/useAxios";
+import { axiosSecure } from "../Hooks/useAxios";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  const axiosSecure = useAxios();
   // console.log(user);
 
   const validateNumber = (number) => {
@@ -65,15 +64,6 @@ const AddFood = () => {
         addedBy,
         description,
       };
-
-      // fetch(
-      //   "/foods",
-      //   {
-      //     method: "POST",
-      //     headers: { "content-type": "application/json" },
-      //     body: JSON.stringify(newFood),
-      //   }
-      // )
 
       axiosSecure
         .post("/foods", newFood)

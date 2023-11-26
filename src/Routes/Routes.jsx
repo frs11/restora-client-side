@@ -14,6 +14,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import RestrictedRoutes from "./RestrictedRoutes";
 import DataLoadingState from "./DataLoadingState";
 import SingleFoodDetails from "../pages/SingleFoodDetails";
+import FoodUpdate from "../pages/FoodUpdate";
 
 const customRoutes = createBrowserRouter([
   {
@@ -77,9 +78,17 @@ const customRoutes = createBrowserRouter([
       {
         path: `/foods/:foodId`,
         element: (
-          <DataLoadingState>
+          <PrivateRoutes>
             <SingleFoodDetails></SingleFoodDetails>
-          </DataLoadingState>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: `/foods/update/:id`,
+        element: (
+          <PrivateRoutes>
+            <FoodUpdate></FoodUpdate>
+          </PrivateRoutes>
         ),
       },
       {
