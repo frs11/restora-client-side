@@ -93,10 +93,10 @@ const AllFoods = () => {
       )}
       <div className="flex justify-center items-center w-10/12 mx-auto flex-wrap mb-10 space-x-3 space-y-2">
         <button
-          className="px-4 flex items-center text-white py-px bg-gray-600 rounded"
+          className="px-3 flex items-center text-white py-px bg-gray-600 rounded"
           onClick={handlePrevButton}
         >
-          <IoIosSkipBackward /> Prev
+          <IoIosSkipBackward className="mr-1"></IoIosSkipBackward> Prev
         </button>
         <span className="flex flex-wrap justify-center items-center space-x-3">
           {pages.map((page, idx) => (
@@ -115,10 +115,10 @@ const AllFoods = () => {
           ))}
         </span>
         <button
-          className="flex items-center px-4 text-white py-px bg-gray-600 rounded"
+          className="flex items-center px-3 text-white py-px bg-gray-600 rounded"
           onClick={handleNextButton}
         >
-          Next <IoPlaySkipForward />
+          Next <IoPlaySkipForward className="ml-1"> </IoPlaySkipForward>
         </button>
         {/* <p>currentPage: {currentPage + 1}</p> <br /> */}
         <select
