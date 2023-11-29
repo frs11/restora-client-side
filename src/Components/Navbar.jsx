@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { BsSun, BsMoon } from "react-icons/bs";
 import useTheme from "../Contexts/themeHook";
+import { axiosSecure } from "../Hooks/useAxios";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +21,22 @@ const Navbar = () => {
   };
   const handleLogout = () => {
     userSignOut()
-      .then(navigate("/login"))
+      .then(
+        axiosSecure
+          .post("/jwt/logout", user)
+          .then((res) => {
+            if (res.data.logout) {
+              Swal.fire({
+                title: "Success!!!",
+                text: "Logout Successfully",
+                icon: "success",
+                confirmButtonText: "Exit",
+              });
+              navigate("/login");
+            }
+          })
+          .catch((err) => console.log(err))
+      )
       .catch((err) => console.log(err.message));
   };
   const handleTheme = () => {

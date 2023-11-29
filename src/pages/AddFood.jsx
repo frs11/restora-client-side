@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { axiosSecure } from "../Hooks/useAxios";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -177,10 +178,9 @@ const AddFood = () => {
                 <input
                   type="text"
                   name="userName"
-                  value={user.displayName}
+                  defaultValue={user.displayName}
                   required
                   placeholder="User Name"
-                  readOnly
                   className="input input-bordered w-full text-gray-500"
                 />
               </label>
@@ -192,10 +192,9 @@ const AddFood = () => {
                 <input
                   type="email"
                   name="userEmail"
-                  value={user.email}
+                  defaultValue={user.email}
                   required
                   placeholder="User Email"
-                  readOnly
                   className="input input-bordered w-full text-gray-500"
                 />
               </label>
@@ -217,11 +216,14 @@ const AddFood = () => {
 
           {/* Submit Button */}
           <div className="flex justify-center mt-5">
-            <input
+            <button
               type="submit"
               value="Add Product"
-              className=" px-2 py-3 bg-violet-600 font-medium text-lg hover:bg-violet-800 hover:text-white ease-in-out duration-300 cursor-pointer w-full mx-auto rounded-lg"
-            />
+              className="flex items-center justify-center px-2 py-3 bg-violet-600 font-medium text-lg hover:bg-violet-800 hover:text-white ease-in-out duration-300 cursor-pointer w-full mx-auto rounded-lg"
+            >
+              <MdFormatListBulletedAdd className="text-xl mr-2"></MdFormatListBulletedAdd>{" "}
+              Submit
+            </button>
           </div>
         </form>
       </div>

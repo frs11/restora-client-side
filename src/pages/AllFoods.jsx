@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import FoodCard from "../Components/Foods/FoodCard";
-// import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { axiosSecure } from "../Hooks/useAxios";

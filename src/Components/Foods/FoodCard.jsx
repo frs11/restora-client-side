@@ -12,7 +12,7 @@ const FoodCard = ({ foodData }) => {
     foodCategory,
     quantity,
     price,
-    // addedBy,
+    addedBy,
     // foodOrigin,
   } = foodData || {};
 
@@ -68,6 +68,11 @@ const FoodCard = ({ foodData }) => {
                 <td className="font-bold">Price: </td>
                 <td>:</td>
                 <td>{price}$</td>
+              </tr>
+              <tr>
+                <td className="font-bold">User: </td>
+                <td>:</td>
+                <td>{addedBy.name}</td>
               </tr>
             </tbody>
           </table>

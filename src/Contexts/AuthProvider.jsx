@@ -9,13 +9,16 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../Firebase Config/firebase,config,js";
+import useAxios from "../Hooks/useAxios";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userFoods, setuserFoods] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecureJwt = useAxios();
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -26,6 +29,17 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   }, [user]);
+  useEffect(() => {
+    if (user) {
+      axiosSecureJwt
+        .get(`/userAddedFoods?user=${user?.email}`)
+        .then((res) => {
+          // console.log(res?.data);
+          setuserFoods(res?.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user, axiosSecureJwt]);
 
   const createNewUser = (email, password) => {
     setLoading(true);
@@ -49,6 +63,7 @@ const AuthProvider = ({ children }) => {
 
   const contextData = {
     user,
+    userFoods,
     loading,
     createNewUser,
     UserLogin,

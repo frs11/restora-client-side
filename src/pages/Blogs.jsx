@@ -116,9 +116,9 @@ const Blogs = () => {
           </span>
           What are the Differences between Mongodb database vs mySQL database?
         </h1>
-        <p className="flex items-start md:pl-5 md:pr-8 text-sm md:text-base">
+        <p className="md:flex items-start md:pl-5 md:pr-8 text-sm md:text-base">
           <span className="mr-3">
-            <FiCornerDownRight className="text-2xl"></FiCornerDownRight>
+            <FiCornerDownRight className="text-2xl hidden md:flex"></FiCornerDownRight>
           </span>
           <p>
             MongoDB and MySQL are both popular database management systems, but
