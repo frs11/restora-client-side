@@ -80,7 +80,7 @@ const AddFood = () => {
           }
         });
 
-      // e.target.reset();
+      e.target.reset();
       console.log("added Food Details ", newFood);
     }
   };

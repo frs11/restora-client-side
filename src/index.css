@@ -11,3 +11,11 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.subscribeBg {
+  background: url("https://img.pikbest.com/backgrounds/20191025/simple-burger-food-fast-food-background-synthesis_1905549.jpg!bw700"),
+    linear-gradient(#07070767, #0e0d0d70);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid black;
+}
