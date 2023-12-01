@@ -31,6 +31,7 @@ const OrderFood = () => {
 
   const { _id, quantity, price, foodName, foodCategory } = SelectedFood || {};
   const [totalPrice, setTotalPrice] = useState(price);
+  // console.log(totalPrice);
 
   const validateNumber = (number) => {
     const parsedNumber = parseInt(number);
@@ -60,7 +61,9 @@ const OrderFood = () => {
   };
   const calculateTotalPrice = (newQuantity) => {
     const result = newQuantity * price;
-    setTotalPrice(result.toFixed(2));
+    const parsedResult = parseFloat(result);
+    // console.log(parsedResult);
+    setTotalPrice(parsedResult.toFixed(2));
   };
 
   const handleOrderedFood = (e) => {
@@ -70,7 +73,9 @@ const OrderFood = () => {
     const userEmail = form.get("userEmail");
     const purchaseDate = date;
     const orderedQuantity = parseInt(totalQuantity);
-    const orderedPrice = parseFloat(totalPrice);
+    const stringPrice = form.get("price");
+    const orderedPrice = parseFloat(stringPrice);
+    // console.log("ordered Price: ", orderedPrice);
 
     const validationResult = validateNumber(totalQuantity);
     if (typeof validationResult == "number") {
@@ -90,20 +95,20 @@ const OrderFood = () => {
         purchaseDate,
       };
 
-      console.log(OrderItem);
+      // console.log(OrderItem);
 
       axiosSecure
         .put(`/orderFood/${_id}`, OrderItem)
 
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (
             res.data?.addFoodResult?.insertedId &&
             res.data?.updateCountResult?.modifiedCount == 1
           ) {
             swal("Success!", "Food Ordered Successfully!", "success");
+            navigate(-1);
           }
-          navigate(-1);
         })
         .catch((err) => console.log(err));
     }

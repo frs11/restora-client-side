@@ -7,6 +7,8 @@ const Subscribe = () => {
     const email = e.target.email.value;
     // console.log(email);
     const subscriber = { email };
+    console.log(subscriber);
+
     axiosSecure
       .post("/subscribe", subscriber)
       .then((res) => {
@@ -39,6 +41,7 @@ const Subscribe = () => {
             placeholder="Enter Your Email"
             type="email"
             name="email"
+            required
           />
           <div className="flex justify-center mt-4">
             <button

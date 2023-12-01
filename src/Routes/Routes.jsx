@@ -26,6 +26,7 @@ const customRoutes = createBrowserRouter([
       {
         path: "/",
         element: <Homepage></Homepage>,
+        loader: () => fetch("http://localhost:5000/foods"),
       },
       {
         path: "/registration",
