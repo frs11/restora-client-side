@@ -4,6 +4,7 @@ import { AuthContext } from "../Contexts/AuthProvider";
 
 const OrderedFood = () => {
   const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Helmet>

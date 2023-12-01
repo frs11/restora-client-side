@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const FoodCard = ({ foodData }) => {
+  const { user } = useContext(AuthContext);
+  const location = useLocation();
   const {
     _id,
     foodName,
@@ -31,7 +34,7 @@ const FoodCard = ({ foodData }) => {
   }, []);
 
   return (
-    <div data-aos="zoom-in-down" className="">
+    <div data-aos="zoom-in-down">
       <div className="shadow-md dark:border rounded-md dark:border-slate-700">
         <div className="flex justify-center px-5 py-3">
           <img
@@ -69,11 +72,17 @@ const FoodCard = ({ foodData }) => {
                 <td>:</td>
                 <td>{price}$</td>
               </tr>
-              <tr>
-                <td className="font-bold">User: </td>
-                <td>:</td>
-                <td>{addedBy.name}</td>
-              </tr>
+              {/* row 5 */}
+              {user?.email == addedBy?.email &&
+              location?.pathname === "/addedFoodList" ? (
+                <tr>
+                  <td className="font-bold">User: </td>
+                  <td>:</td>
+                  <td>{addedBy.name}</td>
+                </tr>
+              ) : (
+                ""
+              )}
             </tbody>
           </table>
         </div>

@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { axiosSecure } from "../Hooks/useAxios";
 import { MdOutlineEditNote } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
+import { AuthContext } from "../Contexts/AuthProvider";
+import swal from "sweetalert";
 
 const SingleFoodDetails = () => {
+  const { user } = useContext(AuthContext);
   const { foodId } = useParams();
   const [SelectedFood, setSelectedFood] = useState({});
   //   console.log(foodId);
@@ -27,7 +30,11 @@ const SingleFoodDetails = () => {
     addedBy,
   } = SelectedFood || {};
   //   console.log(addedBy);
-  const { name } = addedBy || {};
+  const { name, email } = addedBy || {};
+
+  const handleDisabledButton = () => {
+    swal("Sorry!", "We are out of Stock!!", "error");
+  };
   return (
     <div className="w-10/12 lg:max-w-screen-2xl mx-auto my-10">
       <Helmet>
@@ -87,17 +94,28 @@ const SingleFoodDetails = () => {
             </tr>
           </tbody>
         </table>
-        <div className="mt-8 grid grid-cols-2 gap-2">
-          <Link to={`/foods/update/${_id}`}>
-            <button className="w-full btn bg-violet-600 text-white hover:bg-violet-900 border-violet-900 ease-in-out hover:border-violet-800 duration-300">
-              <MdOutlineEditNote className="text-xl"></MdOutlineEditNote> Update
-            </button>
-          </Link>{" "}
-          <Link to={`/foods/foodOrder/${_id}`}>
-            <button className="w-full btn btn-outline hover:bg-violet-700 dark:text-white hover:border-none border ease-in-out duration-300 border-violet-500">
+        <div className="">
+          {user?.email == email ? (
+            <Link to={`/foods/update/${_id}`}>
+              <button className="w-full btn bg-violet-600 text-white hover:bg-violet-900 border-violet-900 ease-in-out hover:border-violet-800 mt-5 duration-300">
+                <MdOutlineEditNote className="text-xl"></MdOutlineEditNote>{" "}
+                Update
+              </button>
+            </Link>
+          ) : quantity == 0 ? (
+            <button
+              onClick={handleDisabledButton}
+              className="w-full btn btn-outline hover:bg-gray-700 bg-gray-500 text-white hover:border-none border ease-in-out duration-300 mt-5 border-gray-500"
+            >
               <LuShoppingCart className="text-lg"></LuShoppingCart> Order Food
             </button>
-          </Link>{" "}
+          ) : (
+            <Link to={`/orderFood/${_id}`}>
+              <button className="w-full btn btn-outline hover:bg-violet-700 dark:text-white hover:border-none border ease-in-out duration-300 mt-5 border-violet-500">
+                <LuShoppingCart className="text-lg"></LuShoppingCart> Order Food
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
