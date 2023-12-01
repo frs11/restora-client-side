@@ -10,13 +10,13 @@ const NewFood = ({ newFood }) => {
         backgroundImage: `url(${foodImage})`,
       }}
     >
-      <div className="hero-overlay rounded-lg bg-opacity-40"></div>
+      {/* <div className="hero-overlay rounded-lg bg-opacity-40"></div> */}
       {/* <div className="hidden h-[150px] hover:flex">
         <button>View Details</button>
       </div> */}
       <div className="absolute bottom-0 w-full rounded-b-lg text-center">
         <div className="">
-          <h1 className=" bg-black bg-opacity-40 text-lg rounded-b-lg md:text-2xl text-white font-thin italic">
+          <h1 className=" bg-black bg-opacity-50 text-lg rounded-b-lg md:text-2xl text-white font-thin italic">
             {foodName}
           </h1>
         </div>

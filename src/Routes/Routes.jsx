@@ -17,6 +17,8 @@ import SingleFoodDetails from "../pages/SingleFoodDetails";
 import FoodUpdate from "../pages/FoodUpdate";
 import OrderFood from "../pages/OrderFood";
 
+const url = "http://localhost:5000";
+
 const customRoutes = createBrowserRouter([
   {
     path: "/",
@@ -26,7 +28,7 @@ const customRoutes = createBrowserRouter([
       {
         path: "/",
         element: <Homepage></Homepage>,
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () => fetch(`${url}/foods`),
       },
       {
         path: "/registration",
@@ -70,7 +72,7 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () => fetch(`${url}/foods`),
         element: (
           <DataLoadingState>
             <AllFoods></AllFoods>

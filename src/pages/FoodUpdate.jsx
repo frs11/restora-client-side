@@ -96,14 +96,6 @@ const FoodUpdate = () => {
 
         .then((res) => {
           //   console.log(res.data);
-          if (res.data?.matchedCount > 0 && res.data?.modifiedCount == 0) {
-            Swal.fire({
-              title: "Try again!!",
-              text: "Nothing to Update",
-              icon: "warning",
-              confirmButtonText: "Exit",
-            });
-          }
           if (res.data?.modifiedCount > 0) {
             Swal.fire({
               title: "Success!!!",
@@ -111,9 +103,8 @@ const FoodUpdate = () => {
               icon: "success",
               confirmButtonText: "Exit",
             });
+            e.target.reset();
             navigate(-1);
-
-            // e.target.reset();
           }
         });
     }
