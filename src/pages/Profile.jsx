@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <div className="">
       <Helmet>
-        <title>Restora | {user.displayName} | Profile </title>
+        <title>Restora | {user.displayName} | User Profile </title>
       </Helmet>
       <div className="w-full lg:w-10/12 mx-auto my-10">
         <h1 className="text-4xl text-center">

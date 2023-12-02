@@ -43,7 +43,7 @@ const Blogs = () => {
           </span>
           What is NPM in node.js?
         </h1>
-        <p className="flex items-start md:pl-5 md:pr-8 text-sm md:text-base">
+        <div className="flex items-start md:pl-5 md:pr-8 text-sm md:text-base">
           <span className="mr-3">
             <FiCornerDownRight className="text-2xl"></FiCornerDownRight>
           </span>
@@ -105,7 +105,7 @@ const Blogs = () => {
               </li>
             </ol>
           </p>
-        </p>
+        </div>
         <p></p>
       </div>
       <div className="border border-gray-600 rounded-md px-2 md:px-5 py-3 mb-10">
