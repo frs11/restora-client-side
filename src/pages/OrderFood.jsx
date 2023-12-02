@@ -98,7 +98,7 @@ const OrderFood = () => {
       // console.log(OrderItem);
 
       axiosSecure
-        .put(`/orderFood/${_id}`, OrderItem)
+        .put(`/orderFood/${_id}`, OrderItem, { withCredentials: true })
 
         .then((res) => {
           // console.log(res.data);

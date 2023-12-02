@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { useContext } from "react";
-import swal from "sweetalert";
 import { Helmet } from "react-helmet-async";
+import swal from "sweetalert";
 
 const Registration = () => {
   const { createNewUser } = useContext(AuthContext);

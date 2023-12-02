@@ -17,7 +17,7 @@ import SingleFoodDetails from "../pages/SingleFoodDetails";
 import FoodUpdate from "../pages/FoodUpdate";
 import OrderFood from "../pages/OrderFood";
 
-const url = "http://localhost:5000";
+const url = "https://restaurant-manager-server.vercel.app";
 
 const customRoutes = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const customRoutes = createBrowserRouter([
       {
         path: "/",
         element: <Homepage></Homepage>,
-        loader: () => fetch(`${url}/foods`),
+        loader: () => fetch(`${url}/foods`, { credentials: "include" }),
       },
       {
         path: "/registration",
@@ -72,7 +72,7 @@ const customRoutes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
-        loader: () => fetch(`${url}/foods`),
+        loader: () => fetch(`${url}/foods`, { credentials: "include" }),
         element: (
           <DataLoadingState>
             <AllFoods></AllFoods>

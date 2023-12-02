@@ -4,11 +4,11 @@ import { useContext } from "react";
 import swal from "sweetalert";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet-async";
-import useAxios from "../Hooks/useAxios";
+import { axiosSecure } from "../Hooks/useAxios";
 
 const Login = () => {
   const { UserLogin, loginWithGoogle } = useContext(AuthContext);
-  const axiosSecure = useAxios();
+  // const axiosSecure = useAxios();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -73,7 +73,6 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 name="email"
-                defaultValue="test@test.com"
                 className="input input-bordered dark:bg-slate-700"
                 required
               />
@@ -85,7 +84,6 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                defaultValue="Test123."
                 placeholder="password"
                 className="input input-bordered dark:bg-slate-700"
                 required

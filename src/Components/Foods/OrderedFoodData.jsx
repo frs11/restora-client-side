@@ -19,8 +19,8 @@ const OrderedFoodData = ({ foodData }) => {
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -67,7 +67,7 @@ const OrderedFoodData = ({ foodData }) => {
       </div>
       <button
         onClick={handleDeleteButton}
-        className="w-full btn bg-violet-900 text-white hover:bg-violet-700 border-violet-900 ease-in-out hover:border-violet-800 duration-300"
+        className="w-full btn bg-red-700 text-white hover:bg-red-900 border-red-800 ease-in-out hover:border-red-800 duration-300"
       >
         Delete Order
       </button>
